@@ -66,7 +66,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
         var time: TFFloat = 0
         if let (from, to) = self.valuePairs {
             if let timeFunction = self.timeFunction {
-                for _ in 0 ..< steps{
+                for _ in 0 ..< steps {
                     let value = from + to * timeFunction(time)
                     values.append(value)
                     keyTimes.append(NSNumber(value: Double(time)))
@@ -80,98 +80,98 @@ class TFBasicAnimation: CAKeyframeAnimation {
 
     typealias TFEasingFunction = TFBasicAnimationFunction
 
-    static let LinearEase: TFEasingFunction = {
+    static let linearEase: TFEasingFunction = {
         $0
     }
 
-    static let QuadEaseIn: TFEasingFunction = {
+    static let quadEaseIn: TFEasingFunction = {
         $0 ^^ 2
     }
 
-    static let QuadEaseOut: TFEasingFunction = {
+    static let quadEaseOut: TFEasingFunction = {
         $0 * (2 - $0)
     }
 
-    static let QuadEaseInOut: TFEasingFunction = {
-        if ($0 < 0.5) {
+    static let quadEaseInOut: TFEasingFunction = {
+        if $0 < 0.5 {
             return 2 * $0 * $0
         } else {
             return -1 + (4 - 2 * $0) * $0
         }
     }
 
-    static let CubicEaseIn: TFEasingFunction = {
+    static let cubicEaseIn: TFEasingFunction = {
         $0 ^^ 3
     }
 
-    static let CubicEaseOut: TFEasingFunction = {
+    static let cubicEaseOut: TFEasingFunction = {
         ($0 - 1) ^^ 3 + 1
     }
 
-    static let CubicEaseInOut: TFEasingFunction = {
-        if ($0 < 0.5) {
+    static let cubicEaseInOut: TFEasingFunction = {
+        if $0 < 0.5 {
             return 4 * ($0 ^^ 3)
         } else {
             return ($0 - 1) * ((2 * $0 - 2) ^^ 2) + 1
         }
     }
 
-    static let QuartEaseIn: TFEasingFunction = {
+    static let quartEaseIn: TFEasingFunction = {
         $0 ^^ 4
     }
 
-    static let QuartEaseOut: TFEasingFunction = {
+    static let quartEaseOut: TFEasingFunction = {
         1 - (($0 - 1) ^^ 4)
     }
 
-    static let QuartEaseInOut: TFEasingFunction = {
-        if ($0 < 0.5) {
+    static let quartEaseInOut: TFEasingFunction = {
+        if $0 < 0.5 {
             return 8 * ($0 ^^ 4)
         } else {
             return -1 / 2 * ((2 * $0 - 2) ^^ 4) + 1
         }
     }
 
-    static let BounceEaseIn: TFEasingFunction = {
-        return 1.0 - BounceEaseOut(1.0 - $0)
+    static let bounceEaseIn: TFEasingFunction = {
+        return 1.0 - bounceEaseOut(1.0 - $0)
     }
 
-    static let BounceEaseOut: TFEasingFunction = {
-        if ($0 < 4.0 / 11.0) {
+    static let bounceEaseOut: TFEasingFunction = {
+        if $0 < 4.0 / 11.0 {
             return pow(11.0 / 4.0, 2) * pow($0, 2)
         }
-        if ($0 < 8.0 / 11.0) {
+        if $0 < 8.0 / 11.0 {
             return 3.0 / 4.0 + pow(11.0 / 4.0, 2) * pow($0 - 6.0 / 11.0, 2)
         }
-        if ($0 < 10.0 / 11.0) {
+        if $0 < 10.0 / 11.0 {
             return 15.0 / 16.0 + pow(11.0 / 4.0, 2) * pow($0 - 9.0 / 11.0, 2)
         }
         return 63.0 / 64.0 + pow(11.0 / 4.0, 2) * pow($0 - 21.0 / 22.0, 2)
     }
 
-    static let ExpoEaseIn: TFEasingFunction = {
+    static let expoEaseIn: TFEasingFunction = {
         return $0 == 0 ? 0.0 : (2 ^^ (10 * ($0 - 1)))
     }
 
-    static let ExpoEaseOut: TFEasingFunction = {
+    static let expoEaseOut: TFEasingFunction = {
         return $0 == 1.0 ? 1 : 1 - ( 2 ^^ ( -10 * $0))
     }
 
-    static let ExpoEaseInOut: TFEasingFunction = {
-        if ($0 == 0) {
+    static let expoEaseInOut: TFEasingFunction = {
+        if $0 == 0 {
             return 0.0
         }
-        if ($0 == 1) {
+        if $0 == 1 {
             return 1.0
         }
-        if ($0 < 0.5) {
+        if $0 < 0.5 {
             return (2 ^^ (10 * (2 * $0 - 1))) / 2
         } else {
             return 1 - (2 ^^ (-10 * (2 * $0 - 1))) / 2
         }
     }
 
-    static func SinEase(period: TFFloat) -> TFEasingFunction {
+    static func sinEase(period: TFFloat) -> TFEasingFunction {
         return {
             -1.0 * sin(2.0 * TFFloat.pi * period * TFFloat($0))
         }

@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.animation()
     }
     @IBAction func btnReplay(_ sender: AnyObject) {
@@ -40,9 +41,9 @@ class ViewController: UIViewController {
         animationY.byValue = height / CGFloat(4.0)
         animationY.duration = 5.0
         animationY.isAdditive = true
-        animationY.timeFunction = TFBasicAnimation.SinEase(period: 2)
+        animationY.timeFunction = TFBasicAnimation.sinEase(period: 2)
         let group = CAAnimationGroup()
-        group.animations = [animationX,animationY]
+        group.animations = [animationX, animationY]
         group.duration = 5.0
         group.beginTime = 0.0
         
@@ -53,6 +54,3 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-
-
-
