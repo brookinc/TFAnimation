@@ -16,14 +16,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.animation()
     }
-    @IBAction func btnReplay(sender: AnyObject) {
+    @IBAction func btnReplay(_ sender: AnyObject) {
         self.animation()
     }
     
-    private func animation() {
+    fileprivate func animation() {
         let width = self.view.frame.width - self.rect.frame.width
         let height = self.view.frame.height
         
@@ -32,21 +32,21 @@ class ViewController: UIViewController {
         animationX.fromValue = 0
         animationX.toValue = width
         animationX.duration = 5.0
-        animationX.additive = true
+        animationX.isAdditive = true
         
         let animationY = TFBasicAnimation()
         animationY.keyPath = "position.y"
         animationY.fromValue = 0
-        animationY.byValue = height / 4
+        animationY.byValue = height / CGFloat(4.0)
         animationY.duration = 5.0
-        animationY.additive = true
+        animationY.isAdditive = true
         animationY.timeFunction = TFEasingFunctionEaseSin(2)
         let group = CAAnimationGroup()
         group.animations = [animationX,animationY]
         group.duration = 5.0
         group.beginTime = 0.0
         
-        self.rect.layer.addAnimation(group, forKey: "TF")
+        self.rect.layer.add(group, forKey: "TF")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

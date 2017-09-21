@@ -10,7 +10,8 @@ import UIKit
 
 typealias TFEasingFunction = TFBasicAnimationFunction
 
-infix operator ^^ { }
+infix operator ^^: BitwiseShiftPrecedence
+
 func ^^ (radix: CGFloat, power: CGFloat) -> CGFloat {
     return CGFloat(pow(Double(radix), Double(power)))
 }
@@ -106,9 +107,9 @@ let TFEasingFunctionEaseInOutExpo:TFEasingFunction = {
     }
 }
 
-func TFEasingFunctionEaseSin(Period:Int) -> TFEasingFunction {
+func TFEasingFunctionEaseSin(_ Period:Int) -> TFEasingFunction {
     return {
-        -CGFloat(sin(2.0 * M_PI * Double(Period) * Double($0)))
+        -CGFloat(sin(2.0 * Double.pi * Double(Period) * Double($0)))
     }
 }
 
