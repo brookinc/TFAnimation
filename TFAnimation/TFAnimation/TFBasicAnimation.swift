@@ -27,7 +27,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
             self.setValues()
         }
     }
-    
+
     var fromValue: TFFloat? {
         didSet {
             self.setValues()
@@ -45,7 +45,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
             self.setValues()
         }
     }
-    
+
     private var valuePairs: (TFFloat, TFFloat)? {
         if let from = fromValue, let to = toValue {
             return (from, to)
@@ -56,7 +56,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
         return nil
     }
-    
+
     private func setValues() {
         let fps = 60
         let steps = Int((TFFloat(fps) * TFFloat(self.duration)))
@@ -79,64 +79,64 @@ class TFBasicAnimation: CAKeyframeAnimation {
     }
 
     typealias TFEasingFunction = TFBasicAnimationFunction
-    
-    static let TFEasingFunctionLinear: TFEasingFunction = {
+
+    static let LinearEase: TFEasingFunction = {
         $0
     }
-    
-    static let TFEasingFunctionEaseInQuad: TFEasingFunction = {
+
+    static let QuadEaseIn: TFEasingFunction = {
         $0 ^^ 2
     }
-    
-    static let TFEasingFunctionEaseOutQuad: TFEasingFunction = {
+
+    static let QuadEaseOut: TFEasingFunction = {
         $0 * (2 - $0)
     }
-    
-    static let TFEasingFunctionEaseInOutQuad: TFEasingFunction = {
+
+    static let QuadEaseInOut: TFEasingFunction = {
         if ($0 < 0.5) {
             return 2 * $0 * $0
         } else {
             return -1 + (4 - 2 * $0) * $0
         }
     }
-    
-    static let TFEasingFunctionEaseInCubic: TFEasingFunction = {
+
+    static let CubicEaseIn: TFEasingFunction = {
         $0 ^^ 3
     }
-    
-    static let TFEasingFunctionEaseOutCubic: TFEasingFunction = {
+
+    static let CubicEaseOut: TFEasingFunction = {
         ($0 - 1) ^^ 3 + 1
     }
-    
-    static let TFEasingFunctionEaseInOutCubic: TFEasingFunction = {
+
+    static let CubicEaseInOut: TFEasingFunction = {
         if ($0 < 0.5) {
             return 4 * ($0 ^^ 3)
         } else {
             return ($0 - 1) * ((2 * $0 - 2) ^^ 2) + 1
         }
     }
-    
-    static let TFEasingFunctionEaseInQuart: TFEasingFunction = {
+
+    static let QuartEaseIn: TFEasingFunction = {
         $0 ^^ 4
     }
-    
-    static let TFEasingFunctionEaseOutQuart: TFEasingFunction = {
+
+    static let QuartEaseOut: TFEasingFunction = {
         1 - (($0 - 1) ^^ 4)
     }
-    
-    static let TFEasingFunctionEaseInOutQuart: TFEasingFunction = {
+
+    static let QuartEaseInOut: TFEasingFunction = {
         if ($0 < 0.5) {
             return 8 * ($0 ^^ 4)
         } else {
             return -1 / 2 * ((2 * $0 - 2) ^^ 4) + 1
         }
     }
-    
-    static let TFEasingFunctionEaseInBounce: TFEasingFunction = {
-        return 1.0 - TFEasingFunctionEaseOutBounce(1.0 - $0)
+
+    static let BounceEaseIn: TFEasingFunction = {
+        return 1.0 - BounceEaseOut(1.0 - $0)
     }
-    
-    static let TFEasingFunctionEaseOutBounce: TFEasingFunction = {
+
+    static let BounceEaseOut: TFEasingFunction = {
         if ($0 < 4.0 / 11.0) {
             return pow(11.0 / 4.0, 2) * pow($0, 2)
         }
@@ -148,16 +148,16 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
         return 63.0 / 64.0 + pow(11.0 / 4.0, 2) * pow($0 - 21.0 / 22.0, 2)
     }
-    
-    static let TFEasingFunctionEaseInExpo: TFEasingFunction = {
+
+    static let ExpoEaseIn: TFEasingFunction = {
         return $0 == 0 ? 0.0 : (2 ^^ (10 * ($0 - 1)))
     }
-    
-    static let TFEasingFunctionEaseOutExpo: TFEasingFunction = {
+
+    static let ExpoEaseOut: TFEasingFunction = {
         return $0 == 1.0 ? 1 : 1 - ( 2 ^^ ( -10 * $0))
     }
-    
-    static let TFEasingFunctionEaseInOutExpo: TFEasingFunction = {
+
+    static let ExpoEaseInOut: TFEasingFunction = {
         if ($0 == 0) {
             return 0.0
         }
@@ -170,8 +170,8 @@ class TFBasicAnimation: CAKeyframeAnimation {
             return 1 - (2 ^^ (-10 * (2 * $0 - 1))) / 2
         }
     }
-    
-    static func TFEasingFunctionEaseSin(period: TFFloat) -> TFEasingFunction {
+
+    static func SinEase(period: TFFloat) -> TFEasingFunction {
         return {
             -1.0 * sin(2.0 * TFFloat.pi * period * TFFloat($0))
         }
