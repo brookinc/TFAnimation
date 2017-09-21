@@ -25,6 +25,9 @@ class TFBasicAnimation: CAKeyframeAnimation {
     var timeFunction: TFBasicAnimationFunction? {
         didSet {
             self.setValues()
+            if valuePairs == nil {
+                print("Error: at least TWO of [fromValue, toValue, byValue] must be set for TFBasicAnimation to animate.")
+            }
         }
     }
 
@@ -47,6 +50,8 @@ class TFBasicAnimation: CAKeyframeAnimation {
     }
 
     private var valuePairs: (TFFloat, TFFloat)? {
+        // Unlike CABasicAnimation (https://developer.apple.com/documentation/quartzcore/cabasicanimation),
+        // we require that TWO of [fromValue, toValue, byValue] are set
         if let from = fromValue, let to = toValue {
             return (from, to)
         } else if let from = fromValue, let by = byValue {
