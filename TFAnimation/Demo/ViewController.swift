@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         animationY.byValue = height / CGFloat(4.0)
         animationY.duration = 5.0
         animationY.isAdditive = true
-        animationY.timeFunction = TFEasingFunctionEaseSin(period: 2)
+        animationY.timeFunction = TFBasicAnimation.TFEasingFunctionEaseSin(period: 2)
         let group = CAAnimationGroup()
         group.animations = [animationX,animationY]
         group.duration = 5.0

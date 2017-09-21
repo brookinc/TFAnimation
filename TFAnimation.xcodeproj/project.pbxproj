@@ -13,7 +13,6 @@
 		B15D945C1D019FFA0038C9B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B15D94541D019FFA0038C9B8 /* Main.storyboard */; };
 		B15D945E1D019FFA0038C9B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D94571D019FFA0038C9B8 /* ViewController.swift */; };
 		B15D94611D01A0700038C9B8 /* TFBasicAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D945F1D01A0700038C9B8 /* TFBasicAnimation.swift */; };
-		B15D94621D01A0700038C9B8 /* TFEasingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D94601D01A0700038C9B8 /* TFEasingFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		B15D94561D019FFA0038C9B8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B15D94571D019FFA0038C9B8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B15D945F1D01A0700038C9B8 /* TFBasicAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFBasicAnimation.swift; sourceTree = "<group>"; };
-		B15D94601D01A0700038C9B8 /* TFEasingFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFEasingFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				B15D945F1D01A0700038C9B8 /* TFBasicAnimation.swift */,
-				B15D94601D01A0700038C9B8 /* TFEasingFunction.swift */,
 			);
 			path = TFAnimation;
 			sourceTree = "<group>";
@@ -158,7 +155,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B15D94621D01A0700038C9B8 /* TFEasingFunction.swift in Sources */,
 				B15D945E1D019FFA0038C9B8 /* ViewController.swift in Sources */,
 				B15D94611D01A0700038C9B8 /* TFBasicAnimation.swift in Sources */,
 				B15D94591D019FFA0038C9B8 /* AppDelegate.swift in Sources */,
