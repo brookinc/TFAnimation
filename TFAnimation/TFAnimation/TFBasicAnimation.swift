@@ -18,17 +18,17 @@ class TFBasicAnimation : CAKeyframeAnimation {
         }
     }
     
-    var fromValue: Any? {
+    var fromValue: CGFloat? {
         didSet {
             self.setValues()
         }
     }
-    var toValue: Any? {
+    var toValue: CGFloat? {
         didSet {
             self.setValues()
         }
     }
-    var byValue: Any? {
+    var byValue: CGFloat? {
         didSet {
             self.setValues()
         }
@@ -37,11 +37,11 @@ class TFBasicAnimation : CAKeyframeAnimation {
     
     fileprivate var valuePairs : (CGFloat,CGFloat)? {
         get {
-            if let from = fromValue as? CGFloat,let to = toValue as? CGFloat {
+            if let from = fromValue,let to = toValue {
                 return (from,to)
-            } else if let from = fromValue as? CGFloat,let by = byValue as? CGFloat{
+            } else if let from = fromValue,let by = byValue {
                 return (from,from + by)
-            } else if let to = toValue as? CGFloat,let by = byValue as? CGFloat{
+            } else if let to = toValue,let by = byValue {
                 return (to - by,to)
             }
             return nil
