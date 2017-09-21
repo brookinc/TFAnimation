@@ -48,7 +48,7 @@ class TFBasicAnimation : CAKeyframeAnimation {
         }
     }
     
-    fileprivate func setValues() {
+    private func setValues() {
         let fps = 60
         let steps = Int((CGFloat(fps) * CGFloat(self.duration)))
         let timeStep = 1.0 / CGFloat(steps)
@@ -57,12 +57,11 @@ class TFBasicAnimation : CAKeyframeAnimation {
         var time:CGFloat = 0
         if let (from,to) = self.valuePairs {
             if let timeFunction = self.timeFunction {
-                for _ in 0..<steps{
+                for _ in 0 ..< steps{
                     let value = from + to * timeFunction(time)
                     values.append(value)
                     keyTimes.append(NSNumber(value: Double(time)))
                     time += timeStep
-                    
                 }
                 self.values = values
                 self.keyTimes = keyTimes
@@ -70,6 +69,3 @@ class TFBasicAnimation : CAKeyframeAnimation {
         }
     }
 }
-
-
-

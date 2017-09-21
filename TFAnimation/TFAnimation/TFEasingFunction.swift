@@ -10,25 +10,25 @@ import UIKit
 
 typealias TFEasingFunction = TFBasicAnimationFunction
 
-infix operator ^^: BitwiseShiftPrecedence
+infix operator ^^: BitwiseShiftPrecedence  // see https://developer.apple.com/documentation/swift/operator_declarations
 
 func ^^ (radix: CGFloat, power: CGFloat) -> CGFloat {
     return CGFloat(pow(Double(radix), Double(power)))
 }
 
-let TFEasingFunctionLinear:TFEasingFunction = {
+let TFEasingFunctionLinear: TFEasingFunction = {
     $0
 }
 
-let TFEasingFunctionEaseInQuad:TFEasingFunction = {
+let TFEasingFunctionEaseInQuad: TFEasingFunction = {
     $0 ^^ 2
 }
 
-let TFEasingFunctionEaseOutQuad:TFEasingFunction = {
+let TFEasingFunctionEaseOutQuad: TFEasingFunction = {
     $0 * (2 - $0)
 }
 
-let TFEasingFunctionEaseInOutQuad:TFEasingFunction = {
+let TFEasingFunctionEaseInOutQuad: TFEasingFunction = {
     if ($0 < 0.5) {
         return 2 * $0 * $0
     } else {
@@ -36,31 +36,31 @@ let TFEasingFunctionEaseInOutQuad:TFEasingFunction = {
     }
 }
 
-let TFEasingFunctionEaseInCubic:TFEasingFunction = {
+let TFEasingFunctionEaseInCubic: TFEasingFunction = {
     $0 ^^ 3
 }
 
-let TFEasingFunctionEaseOutCubic:TFEasingFunction = {
+let TFEasingFunctionEaseOutCubic: TFEasingFunction = {
     ($0 - 1) ^^ 3 + 1
 }
     
-let TFEasingFunctionEaseInOutCubic:TFEasingFunction = {
+let TFEasingFunctionEaseInOutCubic: TFEasingFunction = {
     if ($0 < 0.5) {
         return 4 * ($0 ^^ 3)
     } else {
-        return ($0 - 1) * ((2 * $0 - 2) ^^ 2) + 1;
+        return ($0 - 1) * ((2 * $0 - 2) ^^ 2) + 1
     }
 }
 
-let TFEasingFunctionEaseInQuart:TFEasingFunction = {
+let TFEasingFunctionEaseInQuart: TFEasingFunction = {
     $0 ^^ 4
 }
 
-let TFEasingFunctionEaseOutQuart:TFEasingFunction = {
+let TFEasingFunctionEaseOutQuart: TFEasingFunction = {
     1 - (($0 - 1) ^^ 4)
 }
 
-let TFEasingFunctionEaseInOutQuart:TFEasingFunction = {
+let TFEasingFunctionEaseInOutQuart: TFEasingFunction = {
     if ($0 < 0.5) {
         return 8 * ($0 ^^ 4)
     } else {
@@ -68,11 +68,11 @@ let TFEasingFunctionEaseInOutQuart:TFEasingFunction = {
     }
 }
 
-let TFEasingFunctionEaseInBounce:TFEasingFunction = {
+let TFEasingFunctionEaseInBounce: TFEasingFunction = {
     return 1.0 - TFEasingFunctionEaseOutBounce(1.0 - $0)
 }
 
-let TFEasingFunctionEaseOutBounce:TFEasingFunction = {
+let TFEasingFunctionEaseOutBounce: TFEasingFunction = {
     if ($0 < 4.0 / 11.0) {
         return pow(11.0 / 4.0, 2) * pow($0, 2)
     }
@@ -85,15 +85,15 @@ let TFEasingFunctionEaseOutBounce:TFEasingFunction = {
     return 63.0 / 64.0 + pow(11.0 / 4.0, 2) * pow($0 - 21.0 / 22.0, 2)
 }
 
-let TFEasingFunctionEaseInExpo:TFEasingFunction = {
+let TFEasingFunctionEaseInExpo: TFEasingFunction = {
     return $0 == 0 ? 0.0 : (2 ^^ (10 * ($0 - 1)))
 }
 
-let TFEasingFunctionEaseOutExpo:TFEasingFunction = {
+let TFEasingFunctionEaseOutExpo: TFEasingFunction = {
     return $0 == 1.0 ? 1 : 1 - ( 2 ^^ ( -10 * $0))
 }
 
-let TFEasingFunctionEaseInOutExpo:TFEasingFunction = {
+let TFEasingFunctionEaseInOutExpo: TFEasingFunction = {
     if ($0 == 0) {
         return 0.0
     }
@@ -101,9 +101,9 @@ let TFEasingFunctionEaseInOutExpo:TFEasingFunction = {
         return 1.0
     }
     if ($0 < 0.5) {
-        return (2 ^^ (10 * (2 * $0 - 1))) / 2;
+        return (2 ^^ (10 * (2 * $0 - 1))) / 2
     } else {
-        return 1 - (2 ^^ (-10 * (2 * $0 - 1))) / 2;
+        return 1 - (2 ^^ (-10 * (2 * $0 - 1))) / 2
     }
 }
 
@@ -112,5 +112,3 @@ func TFEasingFunctionEaseSin(_ Period:Int) -> TFEasingFunction {
         -CGFloat(sin(2.0 * Double.pi * Double(Period) * Double($0)))
     }
 }
-
-
