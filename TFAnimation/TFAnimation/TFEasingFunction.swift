@@ -12,8 +12,8 @@ typealias TFEasingFunction = TFBasicAnimationFunction
 
 infix operator ^^: BitwiseShiftPrecedence  // see https://developer.apple.com/documentation/swift/operator_declarations
 
-func ^^ (radix: CGFloat, power: CGFloat) -> CGFloat {
-    return CGFloat(pow(Double(radix), Double(power)))
+func ^^ (radix: TFFloat, power: TFFloat) -> TFFloat {
+    return pow(TFFloat(radix), TFFloat(power))
 }
 
 let TFEasingFunctionLinear: TFEasingFunction = {
@@ -107,8 +107,8 @@ let TFEasingFunctionEaseInOutExpo: TFEasingFunction = {
     }
 }
 
-func TFEasingFunctionEaseSin(_ Period:Int) -> TFEasingFunction {
+func TFEasingFunctionEaseSin(period: TFFloat) -> TFEasingFunction {
     return {
-        -CGFloat(sin(2.0 * Double.pi * Double(Period) * Double($0)))
+        -1.0 * sin(2.0 * TFFloat.pi * period * TFFloat($0))
     }
 }
