@@ -171,9 +171,21 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
     }
 
-    static func sinEase(period: TFFloat) -> TFEasingFunction {
+    /// Returns a sine-wave easing function.
+    ///
+    /// - parameters:
+    ///     - period: the number of full cycles to include (ie. frequency) (default is 1.0)
+    ///     - phaseShift: the proportion of a full cycle to shift the phase by (default is 0.0)
+    ///     - amplitude: multiplier for the amplitude (default is 1.0)
+    ///     - yOffset: the vertical offset to apply (default is 0.0)
+    static func sinEase(period: TFFloat = 1.0, phaseShift: TFFloat = 0.0, amplitude: TFFloat = 1.0, yOffset: TFFloat = 0.0) -> TFEasingFunction {
         return {
-            -1.0 * sin(2.0 * TFFloat.pi * period * TFFloat($0))
+            sin(TFFloat($0) * TFFloat.pi * 2.0 * period - phaseShift * TFFloat.pi * 2.0) * amplitude + yOffset
         }
     }
+    
+    static let sinEaseIn = sinEase(period: 0.25, phaseShift: 0.25, yOffset: 1.0)
+    static let sinEaseOut = sinEase(period: 0.25)
+    static let sinEaseInOut = sinEase(period: 0.5, phaseShift: 0.25, amplitude: 0.5, yOffset: 0.5)
+    
 }
