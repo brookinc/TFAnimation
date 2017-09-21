@@ -80,21 +80,19 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
     }
 
-    typealias TFEasingFunction = TFBasicAnimationFunction
-
-    static let linearEase: TFEasingFunction = {
+    static let linearEase: TFBasicAnimationFunction = {
         $0
     }
 
-    static let quadEaseIn: TFEasingFunction = {
+    static let quadEaseIn: TFBasicAnimationFunction = {
         $0 ^^ 2
     }
 
-    static let quadEaseOut: TFEasingFunction = {
+    static let quadEaseOut: TFBasicAnimationFunction = {
         $0 * (2 - $0)
     }
 
-    static let quadEaseInOut: TFEasingFunction = {
+    static let quadEaseInOut: TFBasicAnimationFunction = {
         if $0 < 0.5 {
             return 2 * $0 * $0
         } else {
@@ -102,15 +100,15 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
     }
 
-    static let cubicEaseIn: TFEasingFunction = {
+    static let cubicEaseIn: TFBasicAnimationFunction = {
         $0 ^^ 3
     }
 
-    static let cubicEaseOut: TFEasingFunction = {
+    static let cubicEaseOut: TFBasicAnimationFunction = {
         ($0 - 1) ^^ 3 + 1
     }
 
-    static let cubicEaseInOut: TFEasingFunction = {
+    static let cubicEaseInOut: TFBasicAnimationFunction = {
         if $0 < 0.5 {
             return 4 * ($0 ^^ 3)
         } else {
@@ -118,15 +116,15 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
     }
 
-    static let quartEaseIn: TFEasingFunction = {
+    static let quartEaseIn: TFBasicAnimationFunction = {
         $0 ^^ 4
     }
 
-    static let quartEaseOut: TFEasingFunction = {
+    static let quartEaseOut: TFBasicAnimationFunction = {
         1 - (($0 - 1) ^^ 4)
     }
 
-    static let quartEaseInOut: TFEasingFunction = {
+    static let quartEaseInOut: TFBasicAnimationFunction = {
         if $0 < 0.5 {
             return 8 * ($0 ^^ 4)
         } else {
@@ -134,11 +132,11 @@ class TFBasicAnimation: CAKeyframeAnimation {
         }
     }
 
-    static let bounceEaseIn: TFEasingFunction = {
+    static let bounceEaseIn: TFBasicAnimationFunction = {
         return 1.0 - bounceEaseOut(1.0 - $0)
     }
 
-    static let bounceEaseOut: TFEasingFunction = {
+    static let bounceEaseOut: TFBasicAnimationFunction = {
         if $0 < 4.0 / 11.0 {
             return pow(11.0 / 4.0, 2) * pow($0, 2)
         }
@@ -151,15 +149,15 @@ class TFBasicAnimation: CAKeyframeAnimation {
         return 63.0 / 64.0 + pow(11.0 / 4.0, 2) * pow($0 - 21.0 / 22.0, 2)
     }
 
-    static let expoEaseIn: TFEasingFunction = {
+    static let expoEaseIn: TFBasicAnimationFunction = {
         return $0 == 0 ? 0.0 : (2 ^^ (10 * ($0 - 1)))
     }
 
-    static let expoEaseOut: TFEasingFunction = {
+    static let expoEaseOut: TFBasicAnimationFunction = {
         return $0 == 1.0 ? 1 : 1 - ( 2 ^^ ( -10 * $0))
     }
 
-    static let expoEaseInOut: TFEasingFunction = {
+    static let expoEaseInOut: TFBasicAnimationFunction = {
         if $0 == 0 {
             return 0.0
         }
@@ -180,7 +178,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
     ///     - phaseShift: the proportion of a full cycle to shift the phase by (default is 0.0)
     ///     - amplitude: multiplier for the amplitude (default is 1.0)
     ///     - yOffset: the vertical offset to apply (default is 0.0)
-    static func sinEase(period: TFFloat = 1.0, phaseShift: TFFloat = 0.0, amplitude: TFFloat = 1.0, yOffset: TFFloat = 0.0) -> TFEasingFunction {
+    static func sinEase(period: TFFloat = 1.0, phaseShift: TFFloat = 0.0, amplitude: TFFloat = 1.0, yOffset: TFFloat = 0.0) -> TFBasicAnimationFunction {
         return {
             sin(TFFloat($0) * TFFloat.pi * 2.0 * period - phaseShift * TFFloat.pi * 2.0) * amplitude + yOffset
         }
