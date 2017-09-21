@@ -1,9 +1,6 @@
 //
-//  TFAnimation.swift
-//  UIViewAnimation
-//
-//  Created by Luo on 6/3/16.
-//  Copyright © 2016 Luo. All rights reserved.
+//  TFBasicAnimation.swift
+//  https://github.com/luowenxing/TFAnimation/
 //
 
 import UIKit

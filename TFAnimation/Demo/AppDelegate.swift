@@ -1,9 +1,6 @@
 //
 //  AppDelegate.swift
-//  TFAnimation
-//
-//  Created by Luo on 6/3/16.
-//  Copyright © 2016 Luo. All rights reserved.
+//  https://github.com/luowenxing/TFAnimation/
 //
 
 import UIKit

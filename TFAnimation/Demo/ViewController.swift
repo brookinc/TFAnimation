@@ -1,9 +1,6 @@
 //
 //  ViewController.swift
-//  UIViewAnimation
-//
-//  Created by Luo on 6/2/16.
-//  Copyright © 2016 Luo. All rights reserved.
+//  https://github.com/luowenxing/TFAnimation/
 //
 
 import UIKit
