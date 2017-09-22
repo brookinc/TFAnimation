@@ -29,14 +29,14 @@ class ViewController: UIViewController {
         
         let animationX = CABasicAnimation()
         animationX.keyPath = "position.x"
-        animationX.fromValue = 0
+        animationX.fromValue = 0.0
         animationX.toValue = width
         animationX.duration = 1.0
         animationX.isAdditive = true
         
         let animationY = TFBasicAnimation()
         animationY.keyPath = "position.y"
-        animationY.fromValue = 0
+        animationY.fromValue = 0.0
         animationY.byValue = -(height / CGFloat(4.0))
         animationY.duration = 1.0
         animationY.isAdditive = true
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         case 14:
             animationY.timeFunction = TFBasicAnimation.expoEaseInOut
         case 15:
-            animationY.timeFunction = TFBasicAnimation.sinEase(period: 2)
+            animationY.timeFunction = TFBasicAnimation.sinEase(period: 2.0)
         case 16:
             animationY.timeFunction = TFBasicAnimation.sinEaseIn
         case 17:

@@ -65,7 +65,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
         let timeStep = 1.0 / TFFloat(steps)
         var values = [TFFloat]()
         var keyTimes = [NSNumber]()
-        var time: TFFloat = 0
+        var time: TFFloat = 0.0
         if let (from, to) = self.valuePairs {
             if let timeFunction = self.timeFunction {
                 for _ in 0 ..< steps {
@@ -85,50 +85,50 @@ class TFBasicAnimation: CAKeyframeAnimation {
     }
 
     static let quadEaseIn: TFBasicAnimationFunction = {
-        $0 ^^ 2
+        $0 ^^ 2.0
     }
 
     static let quadEaseOut: TFBasicAnimationFunction = {
-        $0 * (2 - $0)
+        $0 * (2.0 - $0)
     }
 
     static let quadEaseInOut: TFBasicAnimationFunction = {
         if $0 < 0.5 {
-            return 2 * $0 * $0
+            return 2.0 * $0 * $0
         } else {
-            return -1 + (4 - 2 * $0) * $0
+            return -1.0 + (4.0 - 2.0 * $0) * $0
         }
     }
 
     static let cubicEaseIn: TFBasicAnimationFunction = {
-        $0 ^^ 3
+        $0 ^^ 3.0
     }
 
     static let cubicEaseOut: TFBasicAnimationFunction = {
-        ($0 - 1) ^^ 3 + 1
+        ($0 - 1.0) ^^ 3.0 + 1.0
     }
 
     static let cubicEaseInOut: TFBasicAnimationFunction = {
         if $0 < 0.5 {
-            return 4 * ($0 ^^ 3)
+            return 4.0 * ($0 ^^ 3.0)
         } else {
-            return ($0 - 1) * ((2 * $0 - 2) ^^ 2) + 1
+            return ($0 - 1.0) * ((2.0 * $0 - 2.0) ^^ 2.0) + 1.0
         }
     }
 
     static let quartEaseIn: TFBasicAnimationFunction = {
-        $0 ^^ 4
+        $0 ^^ 4.0
     }
 
     static let quartEaseOut: TFBasicAnimationFunction = {
-        1 - (($0 - 1) ^^ 4)
+        1.0 - (($0 - 1.0) ^^ 4.0)
     }
 
     static let quartEaseInOut: TFBasicAnimationFunction = {
         if $0 < 0.5 {
-            return 8 * ($0 ^^ 4)
+            return 8.0 * ($0 ^^ 4.0)
         } else {
-            return -1 / 2 * ((2 * $0 - 2) ^^ 4) + 1
+            return -1.0 / 2.0 * ((2.0 * $0 - 2.0) ^^ 4.0) + 1.0
         }
     }
 
@@ -138,36 +138,36 @@ class TFBasicAnimation: CAKeyframeAnimation {
 
     static let bounceEaseOut: TFBasicAnimationFunction = {
         if $0 < 4.0 / 11.0 {
-            return pow(11.0 / 4.0, 2) * pow($0, 2)
+            return pow(11.0 / 4.0, 2.0) * pow($0, 2.0)
         }
         if $0 < 8.0 / 11.0 {
-            return 3.0 / 4.0 + pow(11.0 / 4.0, 2) * pow($0 - 6.0 / 11.0, 2)
+            return 3.0 / 4.0 + pow(11.0 / 4.0, 2.0) * pow($0 - 6.0 / 11.0, 2.0)
         }
         if $0 < 10.0 / 11.0 {
-            return 15.0 / 16.0 + pow(11.0 / 4.0, 2) * pow($0 - 9.0 / 11.0, 2)
+            return 15.0 / 16.0 + pow(11.0 / 4.0, 2.0) * pow($0 - 9.0 / 11.0, 2.0)
         }
-        return 63.0 / 64.0 + pow(11.0 / 4.0, 2) * pow($0 - 21.0 / 22.0, 2)
+        return 63.0 / 64.0 + pow(11.0 / 4.0, 2.0) * pow($0 - 21.0 / 22.0, 2.0)
     }
 
     static let expoEaseIn: TFBasicAnimationFunction = {
-        return $0 == 0 ? 0.0 : (2 ^^ (10 * ($0 - 1)))
+        return $0 == 0.0 ? 0.0 : (2.0 ^^ (10.0 * ($0 - 1.0)))
     }
 
     static let expoEaseOut: TFBasicAnimationFunction = {
-        return $0 == 1.0 ? 1 : 1 - ( 2 ^^ ( -10 * $0))
+        return $0 == 1.0 ? 1.0 : 1.0 - (2.0 ^^ ( -10.0 * $0))
     }
 
     static let expoEaseInOut: TFBasicAnimationFunction = {
-        if $0 == 0 {
+        if $0 == 0.0 {
             return 0.0
         }
-        if $0 == 1 {
+        if $0 == 1.0 {
             return 1.0
         }
         if $0 < 0.5 {
-            return (2 ^^ (10 * (2 * $0 - 1))) / 2
+            return (2.0 ^^ (10.0 * (2.0 * $0 - 1.0))) / 2.0
         } else {
-            return 1 - (2 ^^ (-10 * (2 * $0 - 1))) / 2
+            return 1.0 - (2.0 ^^ (-10.0 * (2.0 * $0 - 1.0))) / 2.0
         }
     }
 
