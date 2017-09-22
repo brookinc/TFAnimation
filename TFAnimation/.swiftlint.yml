@@ -36,6 +36,10 @@ opt_in_rules:
   #- vertical_parameter_alignment_on_call
 
 # rule-specfic settings
+cyclomatic_complexity:
+  warning: 10
+  error: 9999
+  ignores_case_statements: true
 function_body_length:
   warning: 500
   error: 9999
