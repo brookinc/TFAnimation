@@ -31,30 +31,62 @@ class ViewController: UIViewController {
         animationX.keyPath = "position.x"
         animationX.fromValue = 0
         animationX.toValue = width
-        animationX.duration = 5.0
+        animationX.duration = 1.0
         animationX.isAdditive = true
         
         let animationY = TFBasicAnimation()
         animationY.keyPath = "position.y"
         animationY.fromValue = 0
         animationY.byValue = -(height / CGFloat(4.0))
-        animationY.duration = 5.0
+        animationY.duration = 1.0
         animationY.isAdditive = true
-        switch animationIndex % 4 {
+        switch animationIndex % 19 {
         case 0:
-            animationY.timeFunction = TFBasicAnimation.sinEase(period: 2)
+            animationY.timeFunction = TFBasicAnimation.linearEase
         case 1:
-            animationY.timeFunction = TFBasicAnimation.sinEaseIn
+            animationY.timeFunction = TFBasicAnimation.quadEaseIn
         case 2:
+            animationY.timeFunction = TFBasicAnimation.quadEaseOut
+        case 3:
+            animationY.timeFunction = TFBasicAnimation.quadEaseInOut
+        case 4:
+            animationY.timeFunction = TFBasicAnimation.cubicEaseIn
+        case 5:
+            animationY.timeFunction = TFBasicAnimation.cubicEaseOut
+        case 6:
+            animationY.timeFunction = TFBasicAnimation.cubicEaseInOut
+        case 7:
+            animationY.timeFunction = TFBasicAnimation.quartEaseIn
+        case 8:
+            animationY.timeFunction = TFBasicAnimation.quartEaseOut
+        case 9:
+            animationY.timeFunction = TFBasicAnimation.quartEaseInOut
+        case 10:
+            animationY.timeFunction = TFBasicAnimation.bounceEaseIn
+        case 11:
+            animationY.timeFunction = TFBasicAnimation.bounceEaseOut
+        case 12:
+            animationY.timeFunction = TFBasicAnimation.expoEaseIn
+        case 13:
+            animationY.timeFunction = TFBasicAnimation.expoEaseOut
+        case 14:
+            animationY.timeFunction = TFBasicAnimation.expoEaseInOut
+        case 15:
+            animationY.timeFunction = TFBasicAnimation.sinEase(period: 2)
+        case 16:
+            animationY.timeFunction = TFBasicAnimation.sinEaseIn
+        case 17:
             animationY.timeFunction = TFBasicAnimation.sinEaseOut
-        default:
+        case 18:
             animationY.timeFunction = TFBasicAnimation.sinEaseInOut
+        default:
+            print("Missing time function!")
         }
         animationIndex += 1
         
         let group = CAAnimationGroup()
         group.animations = [animationX, animationY]
-        group.duration = 5.0
+        group.duration = 1.0
         group.beginTime = 0.0
         
         self.rect.layer.add(group, forKey: "TF")
