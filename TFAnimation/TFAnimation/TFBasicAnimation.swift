@@ -69,7 +69,7 @@ class TFBasicAnimation: CAKeyframeAnimation {
         if let (from, to) = self.valuePairs {
             if let timeFunction = self.timeFunction {
                 for _ in 0 ..< steps {
-                    let value = from + to * timeFunction(time)
+                    let value = from + (to - from) * timeFunction(time)
                     values.append(value)
                     keyTimes.append(NSNumber(value: Double(time)))
                     time += timeStep
