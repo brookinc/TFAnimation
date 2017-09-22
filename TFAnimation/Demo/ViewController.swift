@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         animationY.fromValue = 0.0
         animationY.byValue = -(height / CGFloat(4.0))
         animationY.duration = 1.0
-        animationY.isAdditive = true
+        animationY.isAdditive = true  // calculate our values relative to the object's (local) coordinates
         switch animationIndex % 19 {
         case 0:
             animationY.timeFunction = TFBasicAnimation.linearEase
@@ -88,7 +88,9 @@ class ViewController: UIViewController {
         group.animations = [animationX, animationY]
         group.duration = 1.0
         group.beginTime = 0.0
-        
+        //group.autoreverses = true
+        group.repeatCount = .infinity
+
         self.rect.layer.add(group, forKey: "TF")
     }
 
