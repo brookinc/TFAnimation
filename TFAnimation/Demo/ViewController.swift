@@ -8,6 +8,8 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var rect: UIView!
+    @IBOutlet weak var button: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -15,18 +17,19 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.animation()
+        animate()
     }
     @IBAction func btnReplay(_ sender: AnyObject) {
-        self.animation()
+        animate()
     }
     
     var animationIndex = 0
     
-    private func animation() {
-        let width = self.view.frame.width - self.rect.frame.width
-        let height = self.view.frame.height
+    private func animate() {
+        let width = view.frame.width - rect.frame.width
+        let height = view.frame.height
         
+        // (for possible keyPath values, see: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Key-ValueCodingExtensions/Key-ValueCodingExtensions.html)
         let animationX = CABasicAnimation()
         animationX.keyPath = "position.x"
         animationX.fromValue = 0.0
@@ -91,7 +94,18 @@ class ViewController: UIViewController {
         //group.autoreverses = true
         group.repeatCount = .infinity
 
-        self.rect.layer.add(group, forKey: "TF")
+        rect.layer.add(group, forKey: "TF")
+        
+        // add a sin "pulse" animation on the button as well
+        let buttonAnimation = TFBasicAnimation()
+        buttonAnimation.keyPath = "transform.scale"
+        buttonAnimation.fromValue = 1.0
+        buttonAnimation.byValue = 0.05
+        buttonAnimation.duration = 1.0
+        buttonAnimation.timeFunction = TFBasicAnimation.sinEase()
+        buttonAnimation.repeatCount = .infinity
+
+        button.layer.add(buttonAnimation, forKey: "TFButton")
     }
 
     override func didReceiveMemoryWarning() {

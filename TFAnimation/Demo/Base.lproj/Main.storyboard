@@ -46,6 +46,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button" destination="Ljz-at-G3D" id="83n-Wm-Kao"/>
                         <outlet property="rect" destination="yRd-1J-dOV" id="793-qd-RwX"/>
                     </connections>
                 </viewController>
